@@ -1,0 +1,10 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  name: my-ingress
+spec:
+  backend:
+    serviceName: nignx-service
+    servicePort: 8888

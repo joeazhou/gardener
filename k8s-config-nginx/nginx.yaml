@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nignx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - port: 8888
+      targetPort: 80
